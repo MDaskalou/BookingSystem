@@ -1,7 +1,7 @@
 
 ---
 
-# **📜 3️⃣ Singleton_Pattern.md**
+ **📜 3️⃣ Singleton_Pattern.md**
 📌 **Create inside `docs/design_patterns/`**
 
 ```md
