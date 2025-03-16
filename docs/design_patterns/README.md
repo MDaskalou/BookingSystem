@@ -18,7 +18,7 @@ This system allows healthcare personnel to **manage bookings, authenticate secur
 - **Binary Search**: Efficiently finds available appointment slots.
 - **Priority Queue**: Schedules emergency patients before regular ones.
 
-📌 **For algorithm details, check our [Algorithms Documentation](ALGORITHMS.md).**
+📌 **For algorithm details, check our [Algorithms Documentation](docs/algorithms).**
 
 ---
 
