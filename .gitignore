@@ -1,0 +1,32 @@
+## Byggmappar
+bin/
+obj/
+
+## Användarspecifika filer
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## VS Code
+.vscode/
+
+## Miljöfiler
+.env
+
+## Paket
+packages/
+*.nupkg
+
+## Loggar
+*.log
+
+## OS-specifika filer
+.DS_Store
+Thumbs.db
+
+## Testresultat
+TestResults/
+
+## Publish-mappar
+wwwroot/

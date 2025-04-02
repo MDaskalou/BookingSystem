@@ -1,0 +1,11 @@
+C:\Users\mikae\Desktop\NBI\WebApplikation\BookingSystemSA\BookingSystemSA\BookingSystem.Domain\bin\Debug\net8.0\BookingSystem.Domain.deps.json
+C:\Users\mikae\Desktop\NBI\WebApplikation\BookingSystemSA\BookingSystemSA\BookingSystem.Domain\bin\Debug\net8.0\BookingSystem.Domain.dll
+C:\Users\mikae\Desktop\NBI\WebApplikation\BookingSystemSA\BookingSystemSA\BookingSystem.Domain\bin\Debug\net8.0\BookingSystem.Domain.pdb
+C:\Users\mikae\Desktop\NBI\WebApplikation\BookingSystemSA\BookingSystemSA\BookingSystem.Domain\obj\Debug\net8.0\BookingSystem.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mikae\Desktop\NBI\WebApplikation\BookingSystemSA\BookingSystemSA\BookingSystem.Domain\obj\Debug\net8.0\BookingSystem.Domain.AssemblyInfoInputs.cache
+C:\Users\mikae\Desktop\NBI\WebApplikation\BookingSystemSA\BookingSystemSA\BookingSystem.Domain\obj\Debug\net8.0\BookingSystem.Domain.AssemblyInfo.cs
+C:\Users\mikae\Desktop\NBI\WebApplikation\BookingSystemSA\BookingSystemSA\BookingSystem.Domain\obj\Debug\net8.0\BookingSystem.Domain.csproj.CoreCompileInputs.cache
+C:\Users\mikae\Desktop\NBI\WebApplikation\BookingSystemSA\BookingSystemSA\BookingSystem.Domain\obj\Debug\net8.0\BookingSystem.Domain.dll
+C:\Users\mikae\Desktop\NBI\WebApplikation\BookingSystemSA\BookingSystemSA\BookingSystem.Domain\obj\Debug\net8.0\refint\BookingSystem.Domain.dll
+C:\Users\mikae\Desktop\NBI\WebApplikation\BookingSystemSA\BookingSystemSA\BookingSystem.Domain\obj\Debug\net8.0\BookingSystem.Domain.pdb
+C:\Users\mikae\Desktop\NBI\WebApplikation\BookingSystemSA\BookingSystemSA\BookingSystem.Domain\obj\Debug\net8.0\ref\BookingSystem.Domain.dll
