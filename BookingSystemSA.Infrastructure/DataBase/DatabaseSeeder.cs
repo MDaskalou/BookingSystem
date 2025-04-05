@@ -18,12 +18,18 @@ namespace BookingSystem.Infrastructure.DataBase
 
         public void SeedData()
         {
-            
+
+            // Skapa roller
+            var roleFaker = new RoleFaker();
+            var fakeRoles = roleFaker.GenerateRole().Generate(7);  // Skapa 3 roller (t.ex. Admin, User, Manager)
+            _context.Roles.AddRange(fakeRoles);
+            _context.SaveChanges();
 
             // Skapa användare
             var userFaker = new UserFaker();
             var fakeUsers = userFaker.GenerateUser().Generate(10);  // Skapa 10 användare
             _context.Users.AddRange(fakeUsers);
+            _context.SaveChanges();
 
             // Skapa dokument
             var documentFaker = new DocumentFaker();
@@ -36,11 +42,7 @@ namespace BookingSystem.Infrastructure.DataBase
             var fakeTreatmentTypes = treatmentTypeFaker.GenerateTreatmentType().Generate(5);  // Skapa 5 behandlingstyper
             _context.TreatmentTypes.AddRange(fakeTreatmentTypes);
 
-            // Skapa roller
-            var roleFaker = new RoleFaker();
-            var fakeRoles = roleFaker.GenerateRole().Generate(3);  // Skapa 3 roller (t.ex. Admin, User, Manager)
-            _context.Roles.AddRange(fakeRoles);
-
+            
             // Spara till databasen
             _context.SaveChanges();
         }

@@ -17,7 +17,7 @@ namespace BookingSystem.Domain.Entities
 
         public bool Verified { get; set; } = false;
 
-        public int UploadedById { get; set; }
+        public int UploadedByUserId { get; set; }
         public User UploadedBy { get; set; } = null!;
     }
 }

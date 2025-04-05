@@ -20,7 +20,7 @@ namespace BookingSystem.Application.Services
             {
                 FileName = dto.FileName,
                 Verified = dto.Verified,
-                UploadedById = dto.UploadedById
+                UploadedByUserId = dto.UploadedByUserId
             };
 
             await _repository.AddAsync(document);
@@ -30,13 +30,13 @@ namespace BookingSystem.Application.Services
                 DocumentId = document.DocumentId,
                 FileName = document.FileName,
                 Verified = document.Verified,
-                UploadedById = document.UploadedById
+                UploadedByUserId = document.UploadedByUserId
             };
         }
 
-        public async Task<DocumentDto?> GetDocumentByIdAsync(int id)
+        public async Task<DocumentDto?> GetDocumentByIdAsync(int documentId)
         {
-            var document = await _repository.GetByIdAsync(id);
+            var document = await _repository.GetByIdAsync(documentId);
             if (document == null) return null;
 
             return new DocumentDto
@@ -44,7 +44,7 @@ namespace BookingSystem.Application.Services
                 DocumentId = document.DocumentId,
                 FileName = document.FileName,
                 Verified = document.Verified,
-                UploadedById = document.UploadedById
+                UploadedByUserId = document.UploadedByUserId
             };
         }
 
@@ -56,7 +56,7 @@ namespace BookingSystem.Application.Services
                 DocumentId = d.DocumentId,
                 FileName = d.FileName,
                 Verified = d.Verified,
-                UploadedById = d.UploadedById
+                UploadedByUserId = d.UploadedByUserId
             });
         }
 
@@ -67,7 +67,7 @@ namespace BookingSystem.Application.Services
 
             document.FileName = dto.FileName;
             document.Verified = dto.Verified;
-            document.UploadedById = dto.UploadedById;
+            document.UploadedByUserId = dto.UploadedByUserId;
 
             await _repository.UpdateAsync(document);
             return true;
