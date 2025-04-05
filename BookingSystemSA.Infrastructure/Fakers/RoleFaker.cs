@@ -8,7 +8,7 @@ namespace BookingSystemSA.Infrastructure.Fakers
         public Faker<Role> GenerateRole()
         {
             var faker = new Faker<Role>()
-                .RuleFor(r => r.RoleName, f => f.PickRandom("Admin", "User", "Manager"));
+                .RuleFor(r => r.RoleName, f => f.PickRandom("Admin", "Sjuksköterka", "ECTSjuksköterska", "Överläkare", "Underläkare", "Specialistläkare"));
 
             return faker;
         }

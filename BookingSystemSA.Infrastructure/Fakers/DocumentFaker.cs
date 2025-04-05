@@ -8,7 +8,7 @@ public class DocumentFaker
         var faker = new Faker<Document>()
             .RuleFor(d => d.FileName, f => f.System.FileName())
             .RuleFor(d => d.Verified, f => f.Random.Bool())
-            .RuleFor(d => d.UploadedById, f => f.PickRandom(users).UserId);  // Välj en användare som redan finns
+            .RuleFor(d => d.UploadedByUserId, f => f.PickRandom(users).UserId);  // Välj en användare som redan finns
 
         return faker;
     }
