@@ -11,11 +11,9 @@ namespace BookingSystem.Domain.Entities
     {
         [Key]
         public int PatientId { get; set; }
-        [Required]
-        public string FullName { get; set; } = string.Empty;
-        [Required]
-        public string SocialSecurityNumber { get; set; } = string.Empty;
+        public string FullName { get; set; } 
+        public string SocialSecurityNumber { get; set; } 
 
-        public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
+        public ICollection<Booking> Bookings { get; set; } 
     }
 }

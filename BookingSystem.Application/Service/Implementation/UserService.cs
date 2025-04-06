@@ -29,7 +29,7 @@ namespace BookingSystem.Application.Services
             {
                 Fullname = dto.Fullname,
                 Email = dto.Email,
-                PasswordHash = dto.PasswordHash  // För enkelhetens skull, använd här en hashad version av lösenordet.
+                PasswordHash = dto.Password  // För enkelhetens skull, använd här en hashad version av lösenordet.
             };
 
             // Lägg till användaren i databasen
@@ -43,7 +43,7 @@ namespace BookingSystem.Application.Services
                 Email = user.Email
             };
         }
-
+        
         public async Task<UserDto?> GetUserByIdAsync(int id)
         {
             var user = await _repository.GetByIdAsync(id);
@@ -64,7 +64,9 @@ namespace BookingSystem.Application.Services
             {
                 UserId = u.UserId,
                 Fullname = u.Fullname,
-                Email = u.Email
+                Email = u.Email,
+                RoleName = u.Role?.RoleName 
+
             });
         }
 
@@ -74,7 +76,7 @@ namespace BookingSystem.Application.Services
             if (user == null) return false;
             user.Fullname = dto.Fullname;
             user.Email = dto.Email;
-            user.PasswordHash = dto.PasswordHash;
+            user.PasswordHash = dto.Password;
             await _repository.UpdateAsync(user);
             return true;
         }

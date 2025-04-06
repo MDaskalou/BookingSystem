@@ -41,6 +41,14 @@ namespace BookingSystem.API
             builder.Services.AddScoped<IDocumentService, DocumentService>();
             builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
 
+            // For example, if BookingService implements IBookingService:
+            builder.Services.AddScoped<IBookingService, BookingService>();
+            builder.Services.AddScoped<IBookingRepository, BookingRepository>();
+
+            builder.Services.AddScoped<INotificationService, NotificationService>();
+            builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
+
+
             // Lägg till andra tjänster
             builder.Services.AddScoped<DatabaseSeeder>();
 

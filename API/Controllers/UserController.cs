@@ -18,9 +18,9 @@ namespace BookingSystem.API.Controllers
 
         // GET: api/user/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserDto>> GetUserById(int id)
+        public async Task<ActionResult<UserDto>> GetUserById(int userId)
         {
-            var user = await _userService.GetUserByIdAsync(id);
+            var user = await _userService.GetUserByIdAsync(userId);
             if (user == null) return NotFound();
             return Ok(user);
         }
@@ -35,7 +35,7 @@ namespace BookingSystem.API.Controllers
 
         // POST: api/user/register
         [HttpPost("register")]
-        public async Task<ActionResult<UserDto>> Register(CreateUserDto dto)
+        public async Task<ActionResult<UserDto>> Register([FromBody] CreateUserDto dto)
         {
             try
             {
@@ -50,18 +50,18 @@ namespace BookingSystem.API.Controllers
 
         // PUT: api/user/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> Update(int id, [FromBody] CreateUserDto dto)
+        public async Task<ActionResult> Update(int userId, [FromBody] CreateUserDto dto)
         {
-            var result = await _userService.UpdateUserAsync(id, dto);
+            var result = await _userService.UpdateUserAsync(userId, dto);
             if (!result) return NotFound();
             return NoContent();
         }
 
         // DELETE: api/user/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(int userId)
         {
-            var result = await _userService.DeleteUserAsync(id);
+            var result = await _userService.DeleteUserAsync(userId);
             if (!result) return NotFound();
             return NoContent();
         }

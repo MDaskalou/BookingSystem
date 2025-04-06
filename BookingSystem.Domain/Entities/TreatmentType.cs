@@ -12,7 +12,7 @@ namespace BookingSystem.Domain.Entities
         [Key]
         public int TreatmentTypeId { get; set; }
         [Required]
-        public string Name { get; set; } = string.Empty; // ECT, rTMS, Maintenance ECT, etc.
-        public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
+        public string Name { get; set; }  // ECT, rTMS, Maintenance ECT, etc.
+        public ICollection<Booking> Bookings { get; set; } 
     }
 }

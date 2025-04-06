@@ -9,7 +9,7 @@ namespace BookingSystem.Infrastructure.Fakers
         public Faker<Booking> GenerateBooking(IEnumerable<Patient> patients, IEnumerable<TreatmentType> treatmentTypes, IEnumerable<User> users)
         {
             var faker = new Faker<Booking>()
-                .RuleFor(b => b.BookingId, f => f.Random.Int(1, 1000)) // Random BookingId
+                //.RuleFor(b => b.BookingId, f => f.Random.Int(1, 1000)) // Random BookingId
                 .RuleFor(b => b.Date, f => f.Date.Future()) // Random date in the future
                 .RuleFor(b => b.PatientId, f => f.PickRandom(patients).PatientId) // Random patient
                 .RuleFor(b => b.TreatmentTypeId, f => f.PickRandom(treatmentTypes).TreatmentTypeId) // Random treatment type

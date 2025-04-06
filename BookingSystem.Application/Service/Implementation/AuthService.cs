@@ -13,7 +13,7 @@ public class AuthService
         _configuration = configuration;
     }
 
-    public string GenerateJwtToken(int userId, string username, string role)
+    public string GenerateJwtToken(int userId, string fullname, string role)
     {
         var secretKey = _configuration["Jwt:SecretKey"];
         var key = Encoding.ASCII.GetBytes(secretKey);
@@ -21,7 +21,7 @@ public class AuthService
         var claims = new[]
         {
             new Claim(ClaimTypes.NameIdentifier, userId.ToString()),
-            new Claim(ClaimTypes.Name, username),
+            new Claim(ClaimTypes.Name, fullname),
             new Claim(ClaimTypes.Role, role)
         };
 

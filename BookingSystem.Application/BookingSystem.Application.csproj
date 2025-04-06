@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BookingSystem.Domain\BookingSystem.Domain.csproj" />
     <ProjectReference Include="..\BookingSystemSA.Infrastructure\BookingSystem.Infrastructure.csproj" />
   </ItemGroup>

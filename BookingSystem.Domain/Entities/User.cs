@@ -12,16 +12,15 @@ namespace BookingSystem.Domain.Entities
     {
         [Key]
         public int UserId { get; set; }
-        [Required]
-        public string Fullname { get; set; } = string.Empty;
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; } = string.Empty;
-        [Required]
-        public string PasswordHash { get; set; } = string.Empty;
+       
+        public string Fullname { get; set; } 
+       
+        public string Email { get; set; } 
+      
+        public string PasswordHash { get; set; } 
 
         //navigation
-        public Role Role  { get; set; } = null!;
+        public Role Role  { get; set; }
         public int RoleId { get; set; }
     }
 }
