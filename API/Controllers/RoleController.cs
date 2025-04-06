@@ -25,9 +25,9 @@ namespace BookingSystem.API.Controllers
 
         // GET: api/role/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<RoleDto>> GetRoleById(int id)
+        public async Task<ActionResult<RoleDto>> GetRoleById(int roleId)
         {
-            var role = await _roleService.GetRoleByIdAsync(id);
+            var role = await _roleService.GetRoleByIdAsync(roleId);
             if (role == null) return NotFound();
             return Ok(role);
         }
@@ -42,18 +42,18 @@ namespace BookingSystem.API.Controllers
 
         // PUT: api/role/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateRole(int id, CreateRoleDto dto)
+        public async Task<ActionResult> UpdateRole(int roleId, CreateRoleDto dto)
         {
-            var result = await _roleService.UpdateRoleAsync(id, dto);
+            var result = await _roleService.UpdateRoleAsync(roleId, dto);
             if (!result) return NotFound();
             return NoContent();
         }
 
         // DELETE: api/role/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteRole(int id)
+        public async Task<ActionResult> DeleteRole(int roleId)
         {
-            var result = await _roleService.DeleteRoleAsync(id);
+            var result = await _roleService.DeleteRoleAsync(roleId);
             if (!result) return NotFound();
             return NoContent();
         }

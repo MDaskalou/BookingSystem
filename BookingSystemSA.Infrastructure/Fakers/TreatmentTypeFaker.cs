@@ -1,7 +1,7 @@
 ﻿using Bogus;
 using BookingSystem.Domain.Entities;
 
-namespace BookingSystemSA.Infrastructure.Fakers
+namespace BookingSystem.Infrastructure.Fakers
 {
     public class TreatmentTypeFaker
     {

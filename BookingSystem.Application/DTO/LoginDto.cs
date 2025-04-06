@@ -13,4 +13,6 @@ namespace BookingSystem.Application.DTO
         public string Email { get; set; }
     }
 
+
+
 }

@@ -33,10 +33,10 @@ namespace BookingSystem.API.Controllers
         }
 
         // GET: api/document
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<DocumentDto>>> GetAllDocuments()
+        [HttpGet("Get All Dokument")]
+        public async Task<ActionResult<IEnumerable<DocumentDto>>> GetAllDocuments([FromQuery] string? filter, [FromQuery] string? sort)
         {
-            var documents = await _documentService.GetAllDocumentsAsync();
+            var documents = await _documentService.GetAllDocumentsAsync(filter, sort);
             return Ok(documents);
         }
 

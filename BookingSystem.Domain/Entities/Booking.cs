@@ -18,13 +18,13 @@ namespace BookingSystem.Domain.Entities
         [Required]
 
         public int PatientId { get; set; }
-        public Patient Patient { get; set; } = null!;
+        public Patient Patient { get; set; } 
 
         public int TreatmentTypeId { get; set; }
-        public TreatmentType TreatmentType { get; set; } = null!;
+        public TreatmentType TreatmentType { get; set; } 
 
         public int CreatedById { get; set; }
-        public User CreatedBy { get; set; } = null!;
+        public User CreatedBy { get; set; } 
 
         public DateTime CreatedAt { get; set; }
 

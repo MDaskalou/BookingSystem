@@ -1,17 +1,22 @@
 ﻿using BookingSystem.Application.DTO;
 using BookingSystem.Domain.Entities;
 using BookingSystem.Infrastructure.IRepository;
-using BookingSystem.Infrastructure.Repositories;
+using BookingSystem.Infrastructure.Repository;
+using Microsoft.EntityFrameworkCore;
+using BookingSystem.Application.Service.Interface;
+using BookingSystem.Infrastructure;
 
 namespace BookingSystem.Application.Services
 {
     public class DocumentService : IDocumentService
     {
         private readonly IDocumentRepository _repository;
+        private readonly AppDbContext _context;
 
-        public DocumentService(IDocumentRepository repository)
+        public DocumentService(IDocumentRepository repository, AppDbContext context)
         {
             _repository = repository;
+            _context = context;
         }
 
         public async Task<DocumentDto> CreateDocumentAsync(CreateDocumentDto dto)
@@ -20,7 +25,8 @@ namespace BookingSystem.Application.Services
             {
                 FileName = dto.FileName,
                 Verified = dto.Verified,
-                UploadedByUserId = dto.UploadedByUserId
+                UploadedByUserId = dto.UploadedById
+
             };
 
             await _repository.AddAsync(document);
@@ -30,7 +36,8 @@ namespace BookingSystem.Application.Services
                 DocumentId = document.DocumentId,
                 FileName = document.FileName,
                 Verified = document.Verified,
-                UploadedByUserId = document.UploadedByUserId
+                UploadedById = document.UploadedByUserId
+
             };
         }
 
@@ -44,19 +51,41 @@ namespace BookingSystem.Application.Services
                 DocumentId = document.DocumentId,
                 FileName = document.FileName,
                 Verified = document.Verified,
-                UploadedByUserId = document.UploadedByUserId
+                UploadedById = document.UploadedByUserId
+
             };
         }
 
-        public async Task<IEnumerable<DocumentDto>> GetAllDocumentsAsync()
+        public async Task<IEnumerable<DocumentDto>> GetAllDocumentsAsync(string? filter, string? sort)
         {
+            var query = _context.Documents.AsQueryable();
+
+            //Sorterar filnamn om ett sorteringsalternativ anges
+            if (!string.IsNullOrEmpty(filter))
+            {
+                query = query.Where(d => d.FileName.Contains(filter));
+            }
+
+            if(!string.IsNullOrEmpty(sort))
+            {
+               if(sort.Equals("Ascending", StringComparison.OrdinalIgnoreCase))
+                {
+                    query = query.OrderBy(d => d.FileName);
+                }
+                else if (sort.Equals("Descending", StringComparison.OrdinalIgnoreCase))
+                {
+                    query = query.OrderByDescending(d => d.FileName);
+                }
+            }
+
             var documents = await _repository.GetAllAsync();
             return documents.Select(d => new DocumentDto
             {
                 DocumentId = d.DocumentId,
                 FileName = d.FileName,
                 Verified = d.Verified,
-                UploadedByUserId = d.UploadedByUserId
+                UploadedById = d.UploadedByUserId
+
             });
         }
 
@@ -67,7 +96,8 @@ namespace BookingSystem.Application.Services
 
             document.FileName = dto.FileName;
             document.Verified = dto.Verified;
-            document.UploadedByUserId = dto.UploadedByUserId;
+            document.UploadedByUserId = dto.UploadedById;
+
 
             await _repository.UpdateAsync(document);
             return true;

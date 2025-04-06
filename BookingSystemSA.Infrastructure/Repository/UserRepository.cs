@@ -28,8 +28,11 @@ namespace BookingSystem.Infrastructure.Repositories
 
         public async Task<IEnumerable<User>> GetAllAsync()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Users
+                                 .Include(u => u.Role)
+                                 .ToListAsync();
         }
+
 
         public async Task<User> GetByEmailAsync(string email)
         {
