@@ -26,6 +26,7 @@ namespace BookingSystem.Application.Services
                 FileName = dto.FileName,
                 Verified = dto.Verified,
                 UploadedByUserId = dto.UploadedById
+
             };
 
             await _repository.AddAsync(document);
@@ -36,12 +37,13 @@ namespace BookingSystem.Application.Services
                 FileName = document.FileName,
                 Verified = document.Verified,
                 UploadedById = document.UploadedByUserId
+
             };
         }
 
-        public async Task<DocumentDto?> GetDocumentByIdAsync(int id)
+        public async Task<DocumentDto?> GetDocumentByIdAsync(int documentId)
         {
-            var document = await _repository.GetByIdAsync(id);
+            var document = await _repository.GetByIdAsync(documentId);
             if (document == null) return null;
 
             return new DocumentDto
@@ -50,6 +52,7 @@ namespace BookingSystem.Application.Services
                 FileName = document.FileName,
                 Verified = document.Verified,
                 UploadedById = document.UploadedByUserId
+
             };
         }
 
@@ -82,6 +85,7 @@ namespace BookingSystem.Application.Services
                 FileName = d.FileName,
                 Verified = d.Verified,
                 UploadedById = d.UploadedByUserId
+
             });
         }
 
@@ -93,6 +97,7 @@ namespace BookingSystem.Application.Services
             document.FileName = dto.FileName;
             document.Verified = dto.Verified;
             document.UploadedByUserId = dto.UploadedById;
+
 
             await _repository.UpdateAsync(document);
             return true;

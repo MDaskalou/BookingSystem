@@ -19,5 +19,6 @@ namespace BookingSystem.Domain.Entities
 
         public int UploadedByUserId { get; set; }
         public User UploadedBy { get; set; }
+
     }
 }

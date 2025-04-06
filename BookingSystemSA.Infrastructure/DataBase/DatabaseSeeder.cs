@@ -14,6 +14,7 @@ namespace BookingSystem.Infrastructure.DataBase
 
         public void SeedData()
         {
+
             // Kontrollera om roller redan finns innan du lägger till dem
             if (!_context.Roles.Any())
             {
@@ -30,6 +31,7 @@ namespace BookingSystem.Infrastructure.DataBase
                 var fakeUsers = userFaker.GenerateUser().Generate(10);
                 _context.Users.AddRange(fakeUsers);
             }
+
             _context.SaveChanges();
 
             // Liknande kontroller för andra entiteter...
@@ -56,6 +58,7 @@ namespace BookingSystem.Infrastructure.DataBase
                 var fakeTreatmentTypes = treatmentTypeFaker.GenerateTreatmentType().Generate(5);
                 _context.TreatmentTypes.AddRange(fakeTreatmentTypes);
             }
+
 
             // Spara till databasen
             _context.SaveChanges();
