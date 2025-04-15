@@ -1,0 +1,362 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Application\\BookingSystem.Application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BookingSystem.Application\\BookingSystem.Application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\API\\API.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:API\\API.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\API\\API.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:API\\API.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\API\\Controllers\\TreatmentTypeController .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:API\\Controllers\\TreatmentTypeController .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\API\\Controllers\\AuthController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:API\\Controllers\\AuthController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Application\\Service\\Interface\\IDocumentService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BookingSystem.Application\\Service\\Interface\\IDocumentService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Application\\DTO\\DocumentDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BookingSystem.Application\\DTO\\DocumentDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystemSA.Infrastructure\\DataBase\\AppDbContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BookingSystemSA.Infrastructure\\DataBase\\AppDbContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Domain\\Entities\\Role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BookingSystem.Domain\\Entities\\Role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystemSA.Infrastructure\\Repository\\BookingRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BookingSystemSA.Infrastructure\\Repository\\BookingRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Domain\\Entities\\Document.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BookingSystem.Domain\\Entities\\Document.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Domain\\Entities\\Notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BookingSystem.Domain\\Entities\\Notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\API\\Controllers\\BookingController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:API\\Controllers\\BookingController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Domain\\Enums\\BookingPriority.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BookingSystem.Domain\\Enums\\BookingPriority.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Domain\\Enums\\BookingStatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BookingSystem.Domain\\Enums\\BookingStatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystemSA.Infrastructure\\Fakers\\NotificationFaker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BookingSystemSA.Infrastructure\\Fakers\\NotificationFaker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystemSA.Infrastructure\\Fakers\\PatientFaker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BookingSystemSA.Infrastructure\\Fakers\\PatientFaker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystemSA.Infrastructure\\IRepository\\IBookingRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BookingSystemSA.Infrastructure\\IRepository\\IBookingRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Domain\\Entities\\Booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BookingSystem.Domain\\Entities\\Booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystemSA.Infrastructure\\Repository\\UserRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BookingSystemSA.Infrastructure\\Repository\\UserRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Application\\Validators\\CreateUserDtoValidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BookingSystem.Application\\Validators\\CreateUserDtoValidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BookingSystem.Application.csproj",
+              "DocumentMoniker": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Application\\BookingSystem.Application.csproj",
+              "RelativeDocumentMoniker": "BookingSystem.Application\\BookingSystem.Application.csproj",
+              "ToolTip": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Application\\BookingSystem.Application.csproj",
+              "RelativeToolTip": "BookingSystem.Application\\BookingSystem.Application.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-14T07:28:45.396Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "API.csproj",
+              "DocumentMoniker": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\API\\API.csproj",
+              "RelativeDocumentMoniker": "API\\API.csproj",
+              "ToolTip": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\API\\API.csproj",
+              "RelativeToolTip": "API\\API.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-14T07:26:55.429Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "API.http",
+              "DocumentMoniker": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\API\\API.http",
+              "RelativeDocumentMoniker": "API\\API.http",
+              "ToolTip": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\API\\API.http",
+              "RelativeToolTip": "API\\API.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-04-14T07:26:51.595Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TreatmentTypeController .cs",
+              "DocumentMoniker": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\API\\Controllers\\TreatmentTypeController .cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\TreatmentTypeController .cs",
+              "ToolTip": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\API\\Controllers\\TreatmentTypeController .cs",
+              "RelativeToolTip": "API\\Controllers\\TreatmentTypeController .cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T10:48:08.949Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "API\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAYwDkAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T08:35:18.878Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IDocumentService.cs",
+              "DocumentMoniker": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Application\\Service\\Interface\\IDocumentService.cs",
+              "RelativeDocumentMoniker": "BookingSystem.Application\\Service\\Interface\\IDocumentService.cs",
+              "ToolTip": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Application\\Service\\Interface\\IDocumentService.cs",
+              "RelativeToolTip": "BookingSystem.Application\\Service\\Interface\\IDocumentService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T09:51:00.132Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DocumentDto.cs",
+              "DocumentMoniker": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Application\\DTO\\DocumentDto.cs",
+              "RelativeDocumentMoniker": "BookingSystem.Application\\DTO\\DocumentDto.cs",
+              "ToolTip": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Application\\DTO\\DocumentDto.cs",
+              "RelativeToolTip": "BookingSystem.Application\\DTO\\DocumentDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T10:03:36.626Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystemSA.Infrastructure\\DataBase\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "BookingSystemSA.Infrastructure\\DataBase\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystemSA.Infrastructure\\DataBase\\AppDbContext.cs",
+              "RelativeToolTip": "BookingSystemSA.Infrastructure\\DataBase\\AppDbContext.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-06T20:42:03.971Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Role.cs",
+              "DocumentMoniker": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Domain\\Entities\\Role.cs",
+              "RelativeDocumentMoniker": "BookingSystem.Domain\\Entities\\Role.cs",
+              "ToolTip": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Domain\\Entities\\Role.cs",
+              "RelativeToolTip": "BookingSystem.Domain\\Entities\\Role.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T07:27:32.162Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BookingRepository.cs",
+              "DocumentMoniker": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystemSA.Infrastructure\\Repository\\BookingRepository.cs",
+              "RelativeDocumentMoniker": "BookingSystemSA.Infrastructure\\Repository\\BookingRepository.cs",
+              "ToolTip": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystemSA.Infrastructure\\Repository\\BookingRepository.cs",
+              "RelativeToolTip": "BookingSystemSA.Infrastructure\\Repository\\BookingRepository.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAcwCMAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T07:28:15.528Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Document.cs",
+              "DocumentMoniker": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Domain\\Entities\\Document.cs",
+              "RelativeDocumentMoniker": "BookingSystem.Domain\\Entities\\Document.cs",
+              "ToolTip": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Domain\\Entities\\Document.cs",
+              "RelativeToolTip": "BookingSystem.Domain\\Entities\\Document.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T07:27:27.187Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Notification.cs",
+              "DocumentMoniker": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Domain\\Entities\\Notification.cs",
+              "RelativeDocumentMoniker": "BookingSystem.Domain\\Entities\\Notification.cs",
+              "ToolTip": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Domain\\Entities\\Notification.cs",
+              "RelativeToolTip": "BookingSystem.Domain\\Entities\\Notification.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T07:27:30.374Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "BookingController.cs",
+              "DocumentMoniker": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\API\\Controllers\\BookingController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\BookingController.cs",
+              "ToolTip": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\API\\Controllers\\BookingController.cs",
+              "RelativeToolTip": "API\\Controllers\\BookingController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T08:16:36.999Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "BookingPriority.cs",
+              "DocumentMoniker": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Domain\\Enums\\BookingPriority.cs",
+              "RelativeDocumentMoniker": "BookingSystem.Domain\\Enums\\BookingPriority.cs",
+              "ToolTip": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Domain\\Enums\\BookingPriority.cs",
+              "RelativeToolTip": "BookingSystem.Domain\\Enums\\BookingPriority.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T07:27:33.778Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "BookingStatus.cs",
+              "DocumentMoniker": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Domain\\Enums\\BookingStatus.cs",
+              "RelativeDocumentMoniker": "BookingSystem.Domain\\Enums\\BookingStatus.cs",
+              "ToolTip": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Domain\\Enums\\BookingStatus.cs",
+              "RelativeToolTip": "BookingSystem.Domain\\Enums\\BookingStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T07:27:35.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "NotificationFaker.cs",
+              "DocumentMoniker": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystemSA.Infrastructure\\Fakers\\NotificationFaker.cs",
+              "RelativeDocumentMoniker": "BookingSystemSA.Infrastructure\\Fakers\\NotificationFaker.cs",
+              "ToolTip": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystemSA.Infrastructure\\Fakers\\NotificationFaker.cs",
+              "RelativeToolTip": "BookingSystemSA.Infrastructure\\Fakers\\NotificationFaker.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T07:28:01.345Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "PatientFaker.cs",
+              "DocumentMoniker": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystemSA.Infrastructure\\Fakers\\PatientFaker.cs",
+              "RelativeDocumentMoniker": "BookingSystemSA.Infrastructure\\Fakers\\PatientFaker.cs",
+              "ToolTip": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystemSA.Infrastructure\\Fakers\\PatientFaker.cs",
+              "RelativeToolTip": "BookingSystemSA.Infrastructure\\Fakers\\PatientFaker.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T07:28:02.697Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IBookingRepository.cs",
+              "DocumentMoniker": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystemSA.Infrastructure\\IRepository\\IBookingRepository.cs",
+              "RelativeDocumentMoniker": "BookingSystemSA.Infrastructure\\IRepository\\IBookingRepository.cs",
+              "ToolTip": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystemSA.Infrastructure\\IRepository\\IBookingRepository.cs",
+              "RelativeToolTip": "BookingSystemSA.Infrastructure\\IRepository\\IBookingRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T07:28:11.593Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Booking.cs",
+              "DocumentMoniker": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Domain\\Entities\\Booking.cs",
+              "RelativeDocumentMoniker": "BookingSystem.Domain\\Entities\\Booking.cs",
+              "ToolTip": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Domain\\Entities\\Booking.cs",
+              "RelativeToolTip": "BookingSystem.Domain\\Entities\\Booking.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T07:27:21.647Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystemSA.Infrastructure\\Repository\\UserRepository.cs",
+              "RelativeDocumentMoniker": "BookingSystemSA.Infrastructure\\Repository\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystemSA.Infrastructure\\Repository\\UserRepository.cs",
+              "RelativeToolTip": "BookingSystemSA.Infrastructure\\Repository\\UserRepository.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAgwCIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-06T21:26:26.656Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "CreateUserDtoValidator.cs",
+              "DocumentMoniker": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Application\\Validators\\CreateUserDtoValidator.cs",
+              "RelativeDocumentMoniker": "BookingSystem.Application\\Validators\\CreateUserDtoValidator.cs",
+              "ToolTip": "C:\\Users\\mikae\\Desktop\\NBI\\WebApplikation\\BookingSystemSA\\BookingSystemSA\\BookingSystem.Application\\Validators\\CreateUserDtoValidator.cs",
+              "RelativeToolTip": "BookingSystem.Application\\Validators\\CreateUserDtoValidator.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAswBoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-06T20:49:05.773Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
