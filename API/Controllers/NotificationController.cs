@@ -2,7 +2,7 @@
 using BookingSystem.Application.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BookingSystem.API.Controllers
+namespace API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -23,9 +23,9 @@ namespace BookingSystem.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<NotificationDto>> GetNotificationById(int notificationId)
+        public async Task<ActionResult<NotificationDto>> GetNotificationById(int id)
         {
-            var notification = await _notificationService.GetNotificationByIdAsync(notificationId);
+            var notification = await _notificationService.GetNotificationByIdAsync(id);
             if (notification == null) return NotFound();
             return Ok(notification);
         }
@@ -38,17 +38,17 @@ namespace BookingSystem.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateNotification(int notificationId, CreateNotificationDto dto)
+        public async Task<ActionResult> UpdateNotification(int id, UpdateNotificationDto dto)
         {
-            var result = await _notificationService.UpdateNotificationAsync(notificationId, dto);
+            var result = await _notificationService.UpdateNotificationAsync(id, dto);
             if (!result) return NotFound();
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteNotification(int notificationId)
+        public async Task<ActionResult> DeleteNotification(int id)
         {
-            var result = await _notificationService.DeleteNotificationAsync(notificationId);
+            var result = await _notificationService.DeleteNotificationAsync(id);
             if (!result) return NotFound();
             return NoContent();
         }

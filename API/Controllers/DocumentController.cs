@@ -2,7 +2,7 @@
 using BookingSystem.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BookingSystem.API.Controllers
+namespace API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -33,16 +33,16 @@ namespace BookingSystem.API.Controllers
         }
 
         // GET: api/document
-        [HttpGet("Get All Dokument")]
-        public async Task<ActionResult<IEnumerable<DocumentDto>>> GetAllDocuments([FromQuery] string? filter, [FromQuery] string? sort)
+        [HttpGet("Get-All-Dokument")]
+        public async Task<ActionResult<IEnumerable<DocumentDto>>> GetAllDocuments()
         {
-            var documents = await _documentService.GetAllDocumentsAsync(filter, sort);
+            var documents = await _documentService.GetAllDocumentsAsync();
             return Ok(documents);
         }
 
         // PUT: api/document/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateDocument(int id, CreateDocumentDto dto)
+        public async Task<ActionResult> UpdateDocument(int id,[FromBody] UpdateDocumentDto dto)
         {
             var result = await _documentService.UpdateDocumentAsync(id, dto);
             if (!result) return NotFound();

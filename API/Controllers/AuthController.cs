@@ -1,13 +1,12 @@
-﻿using BookingSystem.Application.DTO;
+﻿using System.Threading.Tasks;
+using BookingSystem.Application.DTO;
 using BookingSystem.Domain.Entities;
 using BookingSystem.Infrastructure;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace BookingSystem.API.Controllers
+namespace API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

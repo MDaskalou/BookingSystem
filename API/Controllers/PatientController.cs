@@ -1,23 +1,22 @@
-﻿using BookingSystem.API;
-using BookingSystem.Domain.Entities;
-using Microsoft.AspNetCore.Mvc;
-using BookingSystem.Application.DTO;
+﻿using BookingSystem.Application.DTO;
 using BookingSystem.Application.Service.Interface;
+using BookingSystem.Domain.Entities;
 using BookingSystem.Infrastructure.IRepository;
+using Microsoft.AspNetCore.Mvc;
 
-namespace BookingSystem.API.Controllers
+namespace API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class PatientsController : ControllerBase
     {
         private readonly IPatientRepository _repository;
-        private readonly IPatientService _service;
+        private readonly IPatientService _patientService;
 
-        public PatientsController(IPatientRepository repository, IPatientService service    )
+        public PatientsController(IPatientRepository repository, IPatientService patientService )
         {
             _repository = repository;
-            _service = service;
+            _patientService = patientService;
         }
 
         [HttpGet]
@@ -34,7 +33,7 @@ namespace BookingSystem.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<PatientDto>> GetById(int id)
+        public async Task<ActionResult<PatientDto>> GetpatientById(int id)
         {
             var patient = await _repository.GetByIdAsync(id);
             if (patient == null) return NotFound();
@@ -48,7 +47,7 @@ namespace BookingSystem.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(CreatePatientDto dto)
+        public async Task<ActionResult> CreatePatient(CreatePatientDto dto)
         {
             var patient = new Patient
             {
@@ -57,24 +56,19 @@ namespace BookingSystem.API.Controllers
             };
 
             await _repository.AddAsync(patient);
-            return CreatedAtAction(nameof(GetById), new { id = patient.PatientId }, null);
+            return CreatedAtAction(nameof(GetpatientById), new { id = patient.PatientId }, null);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Update(int id, CreatePatientDto dto)
+        public async Task<ActionResult> UpdatePatient(int id,[FromBody] UpdatePatientDto dto)
         {
-            var existing = await _repository.GetByIdAsync(id);
-            if (existing == null) return NotFound();
-
-            existing.FullName = dto.FullName;
-            existing.SocialSecurityNumber = dto.SocialSecurityNumber;
-
-            await _repository.UpdateAsync(existing);
-            return NoContent();
+           var result  = await _patientService.UpdatePatientAsync(id, dto);
+           if(!result) return BadRequest();
+           return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> DeletePatient(int id)
         {
             var existing = await _repository.GetByIdAsync(id);
             if (existing == null) return NotFound();
