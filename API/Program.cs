@@ -8,6 +8,9 @@ using BookingSystem.Infrastructure.IRepository;
 using BookingSystem.Infrastructure.Repositories;
 using BookingSystem.Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using BookingSystem.API.ExceptionMiddleware;
+using BookingSystem.Application.Service.Implementation;
 
 namespace BookingSystem.API
 {
@@ -25,55 +28,65 @@ namespace BookingSystem.API
             builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            // Add services (repositories, services, etc.)
+
+            // Repositories
             builder.Services.AddScoped<IPatientRepository, PatientRepository>();
-            builder.Services.AddScoped<IPatientService, PatientService>();
-
-            builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
-
-            builder.Services.AddScoped<IRoleService, RoleService>();
             builder.Services.AddScoped<IRoleRepository, RoleRepository>();
-
-            builder.Services.AddScoped<ITreatmentTypeService, TreatmentTypeService>();
             builder.Services.AddScoped<ITreatmentTypeRepository, TreatmentTypeRepository>();
-
-            builder.Services.AddScoped<IDocumentService, DocumentService>();
             builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
-
-            // For example, if BookingService implements IBookingService:
-            builder.Services.AddScoped<IBookingService, BookingService>();
             builder.Services.AddScoped<IBookingRepository, BookingRepository>();
-
-            builder.Services.AddScoped<INotificationService, NotificationService>();
             builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 
+            // Services
+            builder.Services.AddScoped<IPatientService, PatientService>();
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IRoleService, RoleService>();
+            builder.Services.AddScoped<ITreatmentTypeService, TreatmentTypeService>();
+            builder.Services.AddScoped<IDocumentService, DocumentService>();
+            builder.Services.AddScoped<IBookingService, BookingService>();
+            builder.Services.AddScoped<INotificationService, NotificationService>();
 
-            // L�gg till andra tj�nster
+            // Seeder
             builder.Services.AddScoped<DatabaseSeeder>();
 
-
-            // Add controllers, Swagger, and other necessary services
+            // Controllers, Swagger
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            
+            builder.Services.AddCors();
 
+            
             var app = builder.Build();
 
-            // K�r seeding vid uppstart
+            // Kör seeding vid uppstart
 
             using (var scope = app.Services.CreateScope())
             {
                 var seeder = scope.ServiceProvider.GetRequiredService<DatabaseSeeder>();
                 seeder.SeedData();
             }
+            
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            // Registrera din ExceptionMiddleware här (före andra middlewares)
 
+            app.UseMiddleware<ExceptionMiddleware.ExceptionMiddleware>();
+            
+            app.UseCors(builder =>
+            {
+                builder
+                    .AllowAnyOrigin() // eller .WithOrigins("https://localhost:44312") för mer kontroll
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            });
+
+            
             // Middleware
             app.UseHttpsRedirection();
             app.UseAuthorization();

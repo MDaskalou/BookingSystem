@@ -21,18 +21,10 @@ namespace BookingSystem.Infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Undvik att skapa om tabellen 'Patients'
+            modelBuilder.Entity<Patient>().ToTable("Patients", t => t.ExcludeFromMigrations());
 
             //  Global filter för soft delete på User
             modelBuilder.Entity<User>().HasQueryFilter(u => !u.IsDeleted);
-            
-            modelBuilder.Entity<Booking>()
-                .HasOne(b => b.CreatedBy)                         // navigation property
-                .WithMany()                                       // en användare kan ha flera bokningar
-                .HasForeignKey(b => b.CreatedByUserId)            // detta är FK i Booking
-                .OnDelete(DeleteBehavior.Restrict);               // förhindra att användare tas bort automatiskt med bokning
-            
-            modelBuilder.Entity<Patient>().ToTable("Patients");
-
 
             base.OnModelCreating(modelBuilder);
         }        

@@ -1,5 +1,4 @@
 ﻿using BookingSystem.Infrastructure.Fakers;
-using BookingSystem.Domain.Entities;
 
 
 namespace BookingSystem.Infrastructure.DataBase
@@ -18,12 +17,10 @@ namespace BookingSystem.Infrastructure.DataBase
             // Kontrollera om roller redan finns innan du lägger till dem
             if (!_context.Roles.Any())
             {
-                var roleNames = new[] { "Admin", "Sjuksköterska", "ECTSjuksköterska", "Överläkare", "Underläkare", "Specialistläkare" };
-                var roles = roleNames.Select(name => new Role { RoleName = name }).ToList();
-                _context.Roles.AddRange(roles);
-                _context.SaveChanges();
+                var roleFaker = new RoleFaker();
+                var fakeRoles = roleFaker.GenerateRole().Generate(6);
+                _context.Roles.AddRange(fakeRoles);
             }
-
             _context.SaveChanges();
 
             // Kontrollera om användare redan finns innan du lägger till dem

@@ -21,8 +21,7 @@ namespace BookingSystem.Infrastructure.Repository
 
         public async Task<User?> GetByIdAsync(int id)
         {
-            return await _context.Users.Include(u => u.Role)
-                .FirstOrDefaultAsync(u => u.UserId == id);
+            return await _context.Users.FindAsync(id);
         }
 
         public async Task<IEnumerable<User>> GetAllAsync()
