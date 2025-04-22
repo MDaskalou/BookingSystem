@@ -1,4 +1,5 @@
-﻿using BookingSystem.Application.DTO;
+﻿using System.Threading.Tasks;
+using BookingSystem.Application.DTO;
 using BookingSystem.Application.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,9 +24,9 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<NotificationDto>> GetNotificationById(int id)
+        public async Task<ActionResult<NotificationDto>> GetNotificationById(int notificationId)
         {
-            var notification = await _notificationService.GetNotificationByIdAsync(id);
+            var notification = await _notificationService.GetNotificationByIdAsync(notificationId);
             if (notification == null) return NotFound();
             return Ok(notification);
         }
@@ -38,17 +39,17 @@ namespace API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateNotification(int id, UpdateNotificationDto dto)
+        public async Task<ActionResult> UpdateNotification(int notificationId, CreateNotificationDto dto)
         {
-            var result = await _notificationService.UpdateNotificationAsync(id, dto);
+            var result = await _notificationService.UpdateNotificationAsync(notificationId, dto);
             if (!result) return NotFound();
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteNotification(int id)
+        public async Task<ActionResult> DeleteNotification(int notificationId)
         {
-            var result = await _notificationService.DeleteNotificationAsync(id);
+            var result = await _notificationService.DeleteNotificationAsync(notificationId);
             if (!result) return NotFound();
             return NoContent();
         }

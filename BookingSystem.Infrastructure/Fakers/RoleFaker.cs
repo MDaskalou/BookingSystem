@@ -1,6 +1,7 @@
 ﻿using Bogus;
 using BookingSystem.Domain.Entities;
-
+using System.Collections.Generic;
+using System.Linq;
 namespace BookingSystem.Infrastructure.Fakers
 {
     public class RoleFaker
@@ -20,7 +21,7 @@ namespace BookingSystem.Infrastructure.Fakers
 
             // Skapa en sequens som kommer att iterera över definitonerna
             var faker = new Faker<Role>()
-               // .RuleFor(r => r.RoleId, f => f.IndexFaker + 1) // Säkerställer unika ID:n 1-6
+                .RuleFor(r => r.RoleId, f => f.IndexFaker + 1) // Säkerställer unika ID:n 1-6
                 .RuleFor(r => r.RoleName, (f, r) => roleNames[f.IndexFaker % roleNames.Count])
                 .RuleFor(r => r.Users, f => new List<User>());
 
