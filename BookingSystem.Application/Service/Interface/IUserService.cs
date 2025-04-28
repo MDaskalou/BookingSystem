@@ -9,5 +9,6 @@ namespace BookingSystem.Application.Services
         Task<bool> UpdateUserAsync(int userId, UpdateUserDto dto);
         Task<bool> DeleteUserAsync(int userId);
         Task<IEnumerable<UserDto>> GetAllUsersAsync();
+         
     }
 }

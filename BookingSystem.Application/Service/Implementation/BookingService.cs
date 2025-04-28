@@ -1,11 +1,9 @@
 ﻿using BookingSystem.Application.DTO;
+using BookingSystem.Application.Services;
 using BookingSystem.Domain.Entities;
 using BookingSystem.Infrastructure.IRepository;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace BookingSystem.Application.Services
+namespace BookingSystem.Application.Service.Implementation
 {
     public class BookingService : IBookingService
     {
@@ -16,10 +14,9 @@ namespace BookingSystem.Application.Services
             _repository = repository;
         }
 
-        public async Task<BookingDto> GetBookingByIdAsync(int bookingId)
+        public async Task<BookingDto> GetBookingByIdAsync(int id)
         {
-            var booking = await _repository.GetByIdAsync(bookingId);
-            if (booking == null) return null;
+            var booking = await _repository.GetByIdAsync(id);
 
             return new BookingDto
             {
@@ -27,7 +24,7 @@ namespace BookingSystem.Application.Services
                 Date = booking.Date,
                 PatientId = booking.PatientId,
                 TreatmentTypeId = booking.TreatmentTypeId,
-                CreatedById = booking.CreatedById,
+                CreatedById = booking.CreatedByUserId,
                 CreatedAt = booking.CreatedAt,
                 Priority = booking.Priority,
                 Status = booking.Status
@@ -43,7 +40,7 @@ namespace BookingSystem.Application.Services
                 Date = b.Date,
                 PatientId = b.PatientId,
                 TreatmentTypeId = b.TreatmentTypeId,
-                CreatedById = b.CreatedById,
+                CreatedById = b.CreatedByUserId,
                 CreatedAt = b.CreatedAt,
                 Priority = b.Priority,
                 Status = b.Status
@@ -57,7 +54,7 @@ namespace BookingSystem.Application.Services
                 Date = dto.Date,
                 PatientId = dto.PatientId,
                 TreatmentTypeId = dto.TreatmentTypeId,
-                CreatedById = dto.CreatedById,
+                CreatedByUserId = dto.CreatedById,
                 CreatedAt = dto.CreatedAt,
                 Priority = dto.Priority,
                 Status = dto.Status
@@ -70,7 +67,7 @@ namespace BookingSystem.Application.Services
                 Date = booking.Date,
                 PatientId = booking.PatientId,
                 TreatmentTypeId = booking.TreatmentTypeId,
-                CreatedById = booking.CreatedById,
+                CreatedById = booking.CreatedByUserId,
                 CreatedAt = booking.CreatedAt,
                 Priority = booking.Priority,
                 Status = booking.Status
@@ -80,12 +77,11 @@ namespace BookingSystem.Application.Services
         public async Task<bool> UpdateBookingAsync(int id, CreateBookingDto dto)
         {
             var booking = await _repository.GetByIdAsync(id);
-            if (booking == null) return false;
 
             booking.Date = dto.Date;
             booking.PatientId = dto.PatientId;
             booking.TreatmentTypeId = dto.TreatmentTypeId;
-            booking.CreatedById = dto.CreatedById;
+            booking.CreatedByUserId = dto.CreatedById;
             booking.CreatedAt = dto.CreatedAt;
             booking.Priority = dto.Priority;
             booking.Status = dto.Status;
@@ -97,7 +93,6 @@ namespace BookingSystem.Application.Services
         public async Task<bool> DeleteBookingAsync(int id)
         {
             var booking = await _repository.GetByIdAsync(id);
-            if (booking == null) return false;
 
             await _repository.DeleteAsync(booking);
             return true;

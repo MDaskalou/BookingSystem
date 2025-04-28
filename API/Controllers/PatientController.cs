@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-using BookingSystem.Application.DTO;
-using BookingSystem.Application.Service.Interface;
+﻿using BookingSystem.Application.DTO;
 using BookingSystem.Domain.Entities;
 using BookingSystem.Infrastructure.IRepository;
 using Microsoft.AspNetCore.Mvc;
@@ -12,12 +10,12 @@ namespace API.Controllers
     public class PatientsController : ControllerBase
     {
         private readonly IPatientRepository _repository;
-        private readonly IPatientService _service;
+        //private readonly IPatientService _service;
 
-        public PatientsController(IPatientRepository repository, IPatientService service    )
+        public PatientsController(IPatientRepository repository)
         {
             _repository = repository;
-            _service = service;
+           // _service = service;
         }
 
         [HttpGet]
