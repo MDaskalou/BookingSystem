@@ -1,10 +1,8 @@
-﻿
-using System.Net;
+﻿using System.Net;
 using System.Text.Json;
-using System.Threading.Tasks;
 using BookingSystem.Application.Exceptions;
 
-namespace BookingSystem.API.ExceptionMiddleware;
+namespace API.ExceptionMiddleware;
 
 public class ExceptionMiddleware
 {

@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using BookingSystem.Application.DTO;
+﻿using BookingSystem.Application.DTO;
 using BookingSystem.Application.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 

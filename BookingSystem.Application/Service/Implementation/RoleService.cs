@@ -1,9 +1,9 @@
 ﻿using BookingSystem.Application.DTO;
+using BookingSystem.Application.Services;
 using BookingSystem.Domain.Entities;
 using BookingSystem.Infrastructure.IRepository;
-using BookingSystem.Infrastructure.Repositories;
 
-namespace BookingSystem.Application.Services
+namespace BookingSystem.Application.Service.Implementation
 {
     public class RoleService : IRoleService
     {

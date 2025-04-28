@@ -1,10 +1,9 @@
-﻿using BookingSystem.Application.Service.Interface;
-using BookingSystem.Application.Services;
-using BookingSystem.Application.DTO;
-using BookingSystem.Infrastructure.IRepository;
+﻿using BookingSystem.Application.DTO;
+using BookingSystem.Application.Service.Interface;
 using BookingSystem.Domain.Entities;
+using BookingSystem.Infrastructure.IRepository;
 
-namespace BookingSystem.Application.Services
+namespace BookingSystem.Application.Service.Implementation
 {
     public class PatientService : IPatientService
     {

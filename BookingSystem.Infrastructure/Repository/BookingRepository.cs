@@ -1,9 +1,6 @@
 ﻿using BookingSystem.Domain.Entities;
-using BookingSystem.Infrastructure.DataBase;
 using BookingSystem.Infrastructure.IRepository;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace BookingSystem.Infrastructure.Repositories
 {

@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using BookingSystem.Application.DTO;
+﻿using BookingSystem.Application.DTO;
 using BookingSystem.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,10 +25,10 @@ namespace API.Controllers
 
         // GET: api/booking/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<BookingDto>> GetBookingById(int bookingId)
+        public async Task<ActionResult<BookingDto>> GetBookingById(int id)
         {
-            var booking = await _bookingService.GetBookingByIdAsync(bookingId);
-            if (booking == null) return NotFound();
+            var booking = await _bookingService.GetBookingByIdAsync(id);
+           // if (booking == null) return NotFound();
             return Ok(booking);
         }
 

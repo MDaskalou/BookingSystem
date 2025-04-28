@@ -1,12 +1,11 @@
 ﻿using BookingSystem.Application.DTO;
+using BookingSystem.Application.Services;
 using BookingSystem.Domain.Entities;
-using BookingSystem.Infrastructure.IRepository;
-using BookingSystem.Infrastructure.Repository;
-using Microsoft.EntityFrameworkCore;
-using BookingSystem.Application.Service;
 using BookingSystem.Infrastructure;
+using BookingSystem.Infrastructure.IRepository;
+using Microsoft.EntityFrameworkCore;
 
-namespace BookingSystem.Application.Services
+namespace BookingSystem.Application.Service.Implementation
 {
     public class DocumentService : IDocumentService
     {

@@ -23,7 +23,7 @@ namespace BookingSystem.Domain.Entities
         public int TreatmentTypeId { get; set; }
         public TreatmentType TreatmentType { get; set; } 
 
-        public int CreatedById { get; set; }
+        public int CreatedByUserId { get; set; }
         public User CreatedBy { get; set; } 
 
         public DateTime CreatedAt { get; set; }

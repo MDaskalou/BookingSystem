@@ -4,6 +4,8 @@ using BookingSystem.Domain.Entities;
 using BookingSystem.Infrastructure;
 using BookingSystem.Infrastructure.IRepository;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace BookingSystem.Application.Service.Implementation
 {
@@ -11,11 +13,13 @@ namespace BookingSystem.Application.Service.Implementation
     {
         private readonly IUserRepository _repository;
         private readonly AppDbContext _context;
+        private readonly IPasswordHasher<User> _passwordHasher;
 
-        public UserService(IUserRepository repository, AppDbContext context)
+        public UserService(IUserRepository repository, AppDbContext context, IPasswordHasher<User> passwordHasher)
         {
             _repository = repository;
             _context = context;
+            _passwordHasher = passwordHasher;
         }
 
         public async Task<UserDto> RegisterAsync(CreateUserDto dto)
@@ -129,4 +133,6 @@ namespace BookingSystem.Application.Service.Implementation
             return true;
         }
     }
+
+   
 }

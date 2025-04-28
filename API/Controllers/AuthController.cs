@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using BookingSystem.Application.DTO;
+﻿using BookingSystem.Application.DTO;
 using BookingSystem.Domain.Entities;
 using BookingSystem.Infrastructure;
 using Microsoft.AspNetCore.Identity;
@@ -16,7 +15,7 @@ namespace API.Controllers
         private readonly AppDbContext _context;
         private readonly IPasswordHasher <User> _passwordHasher;
 
-        public AuthController(AuthService authService, AppDbContext context, PasswordHasher<User> passwordHasher)
+        public AuthController(AuthService authService, AppDbContext context, IPasswordHasher<User> passwordHasher)
         {
             _authService = authService;
             _context = context;
@@ -44,7 +43,7 @@ namespace API.Controllers
             }
 
             // Generera JWT-token
-            var token = _authService.GenerateJwtToken(user.UserId, user.Fullname, user.Role?.RoleName);
+            var token = _authService.GenerateJwtToken(user.UserId, user.Fullname, user.Role.RoleName);
             return Ok(new { Token = token });
         }
         // Denna metod används för att logga in en användare.
@@ -73,12 +72,14 @@ namespace API.Controllers
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
+            await _context.Entry(user).Reference(u => u.Role).LoadAsync();
+
             var userDto = new UserDto
             {
                 UserId = user.UserId,
                 Fullname = user.Fullname,
                 Email = user.Email,
-                RoleName = user.Role?.RoleName
+                RoleName = user.Role.RoleName
             };
 
 
@@ -100,12 +101,12 @@ namespace API.Controllers
                 UserId = user.UserId,
                 Fullname = user.Fullname,
                 Email = user.Email,
-                RoleName = user.Role?.RoleName
+                RoleName = user.Role.RoleName
             };
             return Ok(userDto);
         }
 
-        private async Task<User> ValidateUserAsync(string email, string password)
+        private async Task<User?> ValidateUserAsync(string email, string password)
         {
             var user = await _context.Users.Include(u => u.Role)
                                             .FirstOrDefaultAsync(u => u.Email == email);

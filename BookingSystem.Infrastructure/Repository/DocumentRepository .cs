@@ -1,10 +1,8 @@
 ﻿using BookingSystem.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using BookingSystem.Infrastructure.IRepository;
+using Microsoft.EntityFrameworkCore;
 
-namespace BookingSystem.Infrastructure.Repositories
+namespace BookingSystem.Infrastructure.Repository
 {
     public class DocumentRepository : IDocumentRepository
     {

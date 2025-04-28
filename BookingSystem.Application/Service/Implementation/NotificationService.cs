@@ -1,14 +1,9 @@
 ﻿using BookingSystem.Application.DTO;
 using BookingSystem.Application.Service.Interface;
-using BookingSystem.Infrastructure.IRepository;
 using BookingSystem.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using BookingSystem.Infrastructure.IRepository;
 
-namespace BookingSystem.Application.Services
+namespace BookingSystem.Application.Service.Implementation
 {
     public class NotificationService : INotificationService
     {
