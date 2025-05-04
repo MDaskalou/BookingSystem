@@ -1,5 +1,11 @@
-﻿using BookingSystem.Application.DTO;
+﻿using BookingSystem.Application.Commands.TreatmentTypeCommands.CreateTreatmentType;
+using BookingSystem.Application.Commands.TreatmentTypeCommands.DeleteTreatmentType;
+using BookingSystem.Application.Commands.TreatmentTypeCommands.UpdateTreatmentType;
+using BookingSystem.Application.DTO;
+using BookingSystem.Application.Queries.QueriesTreatmentType.GetAllTreatmentType;
+using BookingSystem.Application.Queries.QueriesTreatmentType.GetAllTreatmentTypeById;
 using BookingSystem.Application.Services;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -9,53 +15,62 @@ namespace API.Controllers
     public class TreatmentTypeController : ControllerBase
     {
         private readonly ITreatmentTypeService _treatmentTypeService;
+        private readonly IMediator _mediator;
 
-        public TreatmentTypeController(ITreatmentTypeService treatmentTypeService)
+        public TreatmentTypeController(ITreatmentTypeService treatmentTypeService, IMediator mediator)
         {
             _treatmentTypeService = treatmentTypeService;
+            _mediator = mediator;
         }
 
         // POST: api/treatmenttype
         [HttpPost]
-        public async Task<ActionResult> CreateTreatmentType(CreateTreatmentTypeDto dto)
+        public async Task<IActionResult> CreateTreatmentType([FromBody] CreateTreatmentTypeDto dto)
         {
-            var treatmentType = await _treatmentTypeService.CreateTreatmentTypeAsync(dto);
-            return CreatedAtAction(nameof(GetTreatmentTypeById), new { id = treatmentType.TreatmentTypeId }, treatmentType);
+            var created = await _mediator.Send(new CreateTreatmentTypeCommand(dto));
+            return CreatedAtAction("GetTreatmentTypeById", new { id = created.TreatmentTypeId }, created);
         }
+
 
         // GET: api/treatmenttype/5
         [HttpGet("{id}")]
         public async Task<ActionResult<TreatmentTypeDto>> GetTreatmentTypeById(int id)
         {
-            var treatmentType = await _treatmentTypeService.GetTreatmentTypeByIdAsync(id);
+            var treatmentType = await _mediator.Send(new GetTreatmentTypeByIdQuery(id));
             if (treatmentType == null) return NotFound();
             return Ok(treatmentType);
         }
+
 
         // GET: api/treatmenttype
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TreatmentTypeDto>>> GetAllTreatmentTypes()
         {
-            var treatmentTypes = await _treatmentTypeService.GetAllTreatmentTypesAsync();
+            var treatmentTypes = await _mediator.Send(new GetAllTreatmentTypesQuery());
             return Ok(treatmentTypes);
         }
 
+
         // PUT: api/treatmenttype/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateTreatmentType(int id, CreateTreatmentTypeDto dto)
+        public async Task<IActionResult> UpdateTreatmentType(int id, [FromBody] CreateTreatmentTypeDto dto)
         {
-            var result = await _treatmentTypeService.UpdateTreatmentTypeAsync(id, dto);
-            if (!result) return NotFound();
+            var success = await _mediator.Send(new UpdateTreatmentTypeCommand(id, dto));
+            if (!success) return NotFound();
+
             return NoContent();
         }
 
+
         // DELETE: api/treatmenttype/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteTreatmentType(int id)
+        public async Task<IActionResult> DeleteTreatmentType(int id)
         {
-            var result = await _treatmentTypeService.DeleteTreatmentTypeAsync(id);
+            var result = await _mediator.Send(new DeleteTreatmentTypeCommand(id));
             if (!result) return NotFound();
-            return NoContent();
+
+            return Ok(new { message = "Treatment type deleted" });
         }
+
     }
 }

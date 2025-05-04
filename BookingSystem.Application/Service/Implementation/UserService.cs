@@ -1,4 +1,8 @@
-﻿using BookingSystem.Application.DTO;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using BookingSystem.Application.DTO;
 using BookingSystem.Application.Services;
 using BookingSystem.Domain.Entities;
 using BookingSystem.Infrastructure;
@@ -13,61 +17,15 @@ namespace BookingSystem.Application.Service.Implementation
     {
         private readonly IUserRepository _repository;
         private readonly AppDbContext _context;
-        private readonly IPasswordHasher<User> _passwordHasher;
 
         public UserService(IUserRepository repository, AppDbContext context, IPasswordHasher<User> passwordHasher)
         {
             _repository = repository;
             _context = context;
-            _passwordHasher = passwordHasher;
         }
 
-        public async Task<UserDto> RegisterAsync(CreateUserDto dto)
-        {
-            // Kontrollera om användaren redan finns baserat på e-post
-            var existingUser = await _repository.GetByEmailAsync(dto.Email);
 
-            if (existingUser != null)
-            {
-                throw new Exception("User already exists with this email.");
-            }
-
-            // Skapa en ny användare
-            var user = new User
-            {
-                Fullname = dto.Fullname,
-                Email = dto.Email,
-                PasswordHash = dto.Password,  // Obs! Hasha lösenordet här!
-                RoleId = dto.RoleId // Tilldela en roll baserat på DTO
-            };
-
-            // Lägg till användaren i databasen
-            await _repository.AddAsync(user);
-
-            // Bekräfta att användaren har sparats i databasen
-            await _context.SaveChangesAsync(); // Om detta krävs av din implementation
-
-            // Hämta användaren från databasen med inkluderade roller (för säker matchning)
-            var registeredUser = await _context.Users
-                .Include(u => u.Role)
-                .FirstOrDefaultAsync(u => u.Email == dto.Email);
-
-            // Om av någon anledning användaren inte hittas
-            if (registeredUser == null)
-            {
-                throw new Exception("Failed to save the user to the database.");
-            }
-
-            // Returnera en UserDto med användarens fullständiga information
-            return new UserDto
-            {
-                UserId = registeredUser.UserId,
-                Fullname = registeredUser.Fullname,
-                Email = registeredUser.Email,
-                RoleName = registeredUser.Role?.RoleName // Null check, om roles inte laddats korrekt
-            };
-        }
-
+ 
 
         public async Task<UserDto?> GetUserByIdAsync(int userId)
         {

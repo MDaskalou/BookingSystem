@@ -1,9 +1,9 @@
-﻿using BookingSystem.Application.DTO;
-using BookingSystem.Domain.Entities;
-using BookingSystem.Infrastructure;
-using Microsoft.AspNetCore.Identity;
+﻿using BookingSystem.Application.Commands.User.CreateUser;
+using BookingSystem.Application.Commands.UserCommands.LogInUser;
+using BookingSystem.Application.DTO;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
@@ -11,111 +11,54 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly AuthService _authService;
-        private readonly AppDbContext _context;
-        private readonly IPasswordHasher <User> _passwordHasher;
+        private readonly IMediator _mediator;
 
-        public AuthController(AuthService authService, AppDbContext context, IPasswordHasher<User> passwordHasher)
+        public AuthController(IMediator mediator)
         {
-            _authService = authService;
-            _context = context;
-            _passwordHasher = passwordHasher;
+            _mediator = mediator;
         }
         //Detta är en controller för autentisering och registrering av användare. Den innehåller metoder för att logga in och registrera användare,
         //samt hämta användarinformation baserat på ID.
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
+        public async Task<IActionResult> Login([FromBody] LoginDto dto)
         {
-            // Hämta användaren med inkluderad Role
-            var user = await _context.Users.Include(u => u.Role)
-                .FirstOrDefaultAsync(u => u.Email == loginDto.Email);
-            if (user == null)
+            try
             {
-                return Unauthorized("Invalid credentials");
+                var token = await _mediator.Send(new LogInUserCommand(dto));
+                return Ok(new { Token = token });
             }
-
-            // Verifiera lösenordet med IPasswordHasher
-            var result = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, loginDto.Password);
-            if (result != PasswordVerificationResult.Success)
+            catch (Exception ex)
             {
-                return Unauthorized("Invalid credentials");
-            }
+                return Unauthorized(new { message = ex.Message });
 
-            // Generera JWT-token
-            var token = _authService.GenerateJwtToken(user.UserId, user.Fullname, user.Role.RoleName);
-            return Ok(new { Token = token });
+            }
         }
+
         // Denna metod används för att logga in en användare.
         // Den tar emot en LoginDto som innehåller e-post och lösenord.
+        [Authorize(Policy = "OnlyAdmin")]
+
         [HttpPost("Register")]
         public async Task<IActionResult> Register([FromBody] CreateUserDto dto)
         {
-
-            var existingUser = await _context.Users
-                .FirstOrDefaultAsync(u => u.Email == dto.Email);
-            if (existingUser != null)
+            try
             {
-                return BadRequest("User with this email already exists.");
+                var userId = await _mediator.Send(new CreateUserCommand(dto));
+
+                return CreatedAtAction(
+                    actionName: "GetUserById",
+                    controllerName: "User",
+                    routeValues: new { id = userId },
+                    value: userId
+                );
             }
-            // Validera och registrera användare
-            var user = new User
+            catch (Exception ex)
             {
-                Fullname = dto.Fullname,
-                Email = dto.Email,
-                RoleId = dto.RoleId
-            };
-
-            user.PasswordHash = _passwordHasher.HashPassword(user, dto.Password); // Hasha lösenordet
-
-            // Spara användaren i databasen
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
-
-            await _context.Entry(user).Reference(u => u.Role).LoadAsync();
-
-            var userDto = new UserDto
-            {
-                UserId = user.UserId,
-                Fullname = user.Fullname,
-                Email = user.Email,
-                RoleName = user.Role.RoleName
-            };
-
-
-            return CreatedAtAction(nameof(GetUserById), new { id = user.UserId }, userDto);
-        }
-
-        // Getuserbyid är en metod som används för att hämta en användare baserat på deras ID.
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetUserById(int id)
-        {
-            var user = await _context.Users.Include(u => u.Role)
-                                           .FirstOrDefaultAsync(u => u.UserId == id);
-            if (user == null)
-            {
-                return NotFound();
+                return BadRequest(new { message = ex.Message });
             }
-            var userDto = new UserDto
-            {
-                UserId = user.UserId,
-                Fullname = user.Fullname,
-                Email = user.Email,
-                RoleName = user.Role.RoleName
-            };
-            return Ok(userDto);
-        }
-
-        private async Task<User?> ValidateUserAsync(string email, string password)
-        {
-            var user = await _context.Users.Include(u => u.Role)
-                                            .FirstOrDefaultAsync(u => u.Email == email);
-            if (user == null)
-            {
-                return null;
-            }
-            var result = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, password);
-            return result == PasswordVerificationResult.Success ? user : null;
         }
     }
+
+
 }
