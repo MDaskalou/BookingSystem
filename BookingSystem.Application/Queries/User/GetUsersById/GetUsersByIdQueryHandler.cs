@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookingSystem.Application.Queries.User.GetUsersById;
 
-public class GetUsersByIdQueryHandler : IRequestHandler<GetUsersByIdQuery, Result<UserDto>>
+public class GetUsersByIdQueryHandler : IRequestHandler<GetUsersByIdQuery, OperationResult<UserDto>>
 {
     private readonly AppDbContext _context;
 
@@ -17,14 +17,14 @@ public class GetUsersByIdQueryHandler : IRequestHandler<GetUsersByIdQuery, Resul
         _context = context;
     }
 
-    public async Task<Result<UserDto>> Handle(GetUsersByIdQuery request, CancellationToken cancellationToken)
+    public async Task<OperationResult<UserDto>> Handle(GetUsersByIdQuery request, CancellationToken cancellationToken)
     {
         var user = await _context.Users
             .Include(u => u.Role)
             .FirstOrDefaultAsync(u => u.UserId == request.Id, cancellationToken);
 
         if (user == null)
-            return Result<UserDto>.Fail("User not found");
+            return OperationResult<UserDto>.Fail("User not found");
 
         var userDto = new UserDto
         {
@@ -34,6 +34,6 @@ public class GetUsersByIdQueryHandler : IRequestHandler<GetUsersByIdQuery, Resul
             RoleName = user.Role.RoleName
         };
 
-        return Result<UserDto>.Ok(userDto);
+        return OperationResult<UserDto>.Ok(userDto);
     }
 }
