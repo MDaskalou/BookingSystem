@@ -1,7 +1,9 @@
 using System.Text;
+using BookingSystem.Application.Authorization;
+using BookingSystem.Application.Behaviors;
+using BookingSystem.Application.Queries.GetAllUsers;
 using BookingSystem.Application.Service.Implementation;
-using BookingSystem.Application.Service.Interface;
-using BookingSystem.Application.Services;
+using BookingSystem.Application.Validators;
 using BookingSystem.Infrastructure;
 using BookingSystem.Infrastructure.DataBase;
 using BookingSystem.Infrastructure.IRepository;
@@ -12,6 +14,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Identity;
 using BookingSystem.Domain.Entities;
+using MediatR;
+using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace API
@@ -44,15 +49,51 @@ namespace API
             
 
             // Services
-            builder.Services.AddScoped<IPatientService, PatientService>();
-            builder.Services.AddScoped<IUserService, UserService>();
-            builder.Services.AddScoped<IRoleService, RoleService>();
-            builder.Services.AddScoped<ITreatmentTypeService, TreatmentTypeService>();
-            builder.Services.AddScoped<IDocumentService, DocumentService>();
-            builder.Services.AddScoped<IBookingService, BookingService>();
-            builder.Services.AddScoped<INotificationService, NotificationService>();
+            //builder.Services.AddScoped<IPatientService, PatientService>();
+            //builder.Services.AddScoped<IUserService, UserService>();
+            //builder.Services.AddScoped<IRoleService, RoleService>();
+            //builder.Services.AddScoped<ITreatmentTypeService, TreatmentTypeService>();
+            //builder.Services.AddScoped<IDocumentService, DocumentService>();
+            //builder.Services.AddScoped<IBookingService, BookingService>();
+            //builder.Services.AddScoped<INotificationService, NotificationService>();
+           
             builder.Services.AddScoped<AuthService>();
             builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+            
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("OnlyAdmin", policy =>
+                    policy.Requirements.Add(new RoleRequirement("Admin")));
+            });
+            builder.Services.AddSingleton<IAuthorizationHandler, RoleRequirementHandler>();
+
+            
+            
+            //Mediatr
+            builder.Services.AddMediatR(cfg =>
+            {
+                cfg.RegisterServicesFromAssembly(typeof(GetAllUsersQuery).Assembly);
+            });
+            
+            
+            //pipline
+            builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ExceptionHandlingBehavior<,>));
+            builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
+            builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            
+            //Validators
+            builder.Services.AddValidatorsFromAssemblyContaining<CreateBookingDtoValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<CreatePatientDtoValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<CreateNotificationDtoValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<CreateRoleDtoValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<CreateTreatmentTypeDtoValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<CreateDocumentDtoValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<UpdateUserDtoValidator>();
+
+
+            
+
+
 
             
             builder.Services.AddAuthentication(options =>

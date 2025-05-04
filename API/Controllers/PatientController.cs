@@ -1,84 +1,60 @@
-﻿using BookingSystem.Application.DTO;
-using BookingSystem.Domain.Entities;
-using BookingSystem.Infrastructure.IRepository;
+﻿using BookingSystem.Application.Commands.PatientCommand.CreatePatient;
+using BookingSystem.Application.Commands.PatientCommand.DeletePatient;
+using BookingSystem.Application.Commands.PatientCommand.UpdatePatient;
+using BookingSystem.Application.DTO;
+using BookingSystem.Application.Queries.QueriesPatient.GetAllPatient;
+using BookingSystem.Application.Queries.QueriesPatient.GetPatientById;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace API.Controllers
+namespace API.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class PatientsController : ControllerBase
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class PatientsController : ControllerBase
+    private readonly IMediator _mediator;
+
+    public PatientsController(IMediator mediator)
     {
-        private readonly IPatientRepository _repository;
-        //private readonly IPatientService _service;
+        _mediator = mediator;
+    }
 
-        public PatientsController(IPatientRepository repository)
-        {
-            _repository = repository;
-           // _service = service;
-        }
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var patients = await _mediator.Send(new GetAllPatientsQuery());
+        return Ok(patients);
+    }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<PatientDto>>> GetAll()
-        {
-            var patients = await _repository.GetAllAsync();
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(int id)
+    {
+        var patient = await _mediator.Send(new GetPatientByIdQuery(id));
+        if (patient == null) return NotFound();
+        return Ok(patient);
+    }
 
-            return Ok(patients.Select(p => new PatientDto
-            {
-                PatientId = p.PatientId,
-                FullName = p.FullName,
-                SocialSecurityNumber = p.SocialSecurityNumber
-            }));
-        }
+    [HttpPost]
+    public async Task<IActionResult> Create([FromBody] CreatePatientDto dto)
+    {
+        var created = await _mediator.Send(new CreatePatientCommand(dto));
+        return CreatedAtAction(nameof(GetById), new { id = created.PatientId }, created);
+    }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<PatientDto>> GetById(int id)
-        {
-            var patient = await _repository.GetByIdAsync(id);
-            if (patient == null) return NotFound();
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(int id, [FromBody] CreatePatientDto dto)
+    {
+        var success = await _mediator.Send(new UpdatePatientCommand(id, dto));
+        if (!success) return NotFound();
+        return NoContent();
+    }
 
-            return Ok(new PatientDto
-            {
-                PatientId = patient.PatientId,
-                FullName = patient.FullName,
-                SocialSecurityNumber = patient.SocialSecurityNumber
-            });
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> Create(CreatePatientDto dto)
-        {
-            var patient = new Patient
-            {
-                FullName = dto.FullName,
-                SocialSecurityNumber = dto.SocialSecurityNumber
-            };
-
-            await _repository.AddAsync(patient);
-            return CreatedAtAction(nameof(GetById), new { id = patient.PatientId }, null);
-        }
-
-        [HttpPut("{id}")]
-        public async Task<ActionResult> Update(int id, CreatePatientDto dto)
-        {
-            var existing = await _repository.GetByIdAsync(id);
-            if (existing == null) return NotFound();
-
-            existing.FullName = dto.FullName;
-            existing.SocialSecurityNumber = dto.SocialSecurityNumber;
-
-            await _repository.UpdateAsync(existing);
-            return NoContent();
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int id)
-        {
-            var existing = await _repository.GetByIdAsync(id);
-            if (existing == null) return NotFound();
-
-            await _repository.DeleteAsync(existing);
-            return NoContent();
-        }
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var success = await _mediator.Send(new DeletePatientCommand(id));
+        if (!success) return NotFound();
+        return Ok(new { message = "Patient successfully deleted" });
     }
 }

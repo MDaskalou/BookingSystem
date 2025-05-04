@@ -1,5 +1,11 @@
-﻿using BookingSystem.Application.DTO;
+﻿using BookingSystem.Application.Commands.BookingCommand.CreateBooking;
+using BookingSystem.Application.Commands.BookingCommand.DeleteCommand;
+using BookingSystem.Application.Commands.BookingCommand.UpdateBooking;
+using BookingSystem.Application.DTO;
+using BookingSystem.Application.Queries.QueriesBooking.GetAllBookings;
+using BookingSystem.Application.Queries.QueriesBooking.GetBookingById;
 using BookingSystem.Application.Services;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -8,54 +14,62 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class BookingController : ControllerBase
     {
-        private readonly IBookingService _bookingService;
+        private readonly IMediator _mediator;
 
-        public BookingController(IBookingService bookingService)
+        public BookingController(  IMediator mediator)
         {
-            _bookingService = bookingService;
+            _mediator = mediator;
         }
 
         // GET: api/booking
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BookingDto>>> GetAllBookings()
         {
-            var bookings = await _bookingService.GetAllBookingsAsync();
+            var bookings = await _mediator.Send(new GetAllBookingsQuery());
             return Ok(bookings);
         }
+
 
         // GET: api/booking/5
         [HttpGet("{id}")]
         public async Task<ActionResult<BookingDto>> GetBookingById(int id)
         {
-            var booking = await _bookingService.GetBookingByIdAsync(id);
-           // if (booking == null) return NotFound();
+            var booking = await _mediator.Send(new GetBookingByIdQuery(id));
+            if (booking == null) return NotFound();
+
             return Ok(booking);
         }
 
         // POST: api/booking
         [HttpPost]
-        public async Task<ActionResult> CreateBooking([FromBody] CreateBookingDto dto)
+        public async Task<IActionResult> CreateBooking([FromBody] CreateBookingDto dto)
         {
-            var booking = await _bookingService.CreateBookingAsync(dto);
-            return CreatedAtAction(nameof(GetBookingById), new { id = booking.BookingId }, booking);
+            var created = await _mediator.Send(new CreateBookingCommand(dto));
+            return CreatedAtAction(nameof(GetBookingById), new { id = created.BookingId }, created);
         }
+
 
         // PUT: api/booking/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateBooking(int bookingId, [FromBody] CreateBookingDto dto)
+        public async Task<IActionResult> UpdateBooking(int id, [FromBody] CreateBookingDto dto)
         {
-            var result = await _bookingService.UpdateBookingAsync(bookingId, dto);
-            if (!result) return NotFound();
+            var success = await _mediator.Send(new UpdateBookingCommand(id, dto));
+            if (!success) return NotFound();
+
             return NoContent();
         }
 
+        
+
         // DELETE: api/booking/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteBooking(int bookingId)
+        public async Task<IActionResult> DeleteBooking(int id)
         {
-            var result = await _bookingService.DeleteBookingAsync(bookingId);
+            var result = await _mediator.Send(new DeleteBookingCommand(id));
             if (!result) return NotFound();
-            return NoContent();
+
+            return Ok(new { message = "Booking successfully deleted" });
         }
+
     }
 }
