@@ -1,12 +1,14 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using Azure;
+using BookingSystem.Application.Common;
 using BookingSystem.Infrastructure;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookingSystem.Application.Commands.BookingCommand.UpdateBooking;
 
-public class UpdateBookingCommandHandler : IRequestHandler<UpdateBookingCommand, bool>
+public class UpdateBookingCommandHandler : IRequestHandler<UpdateBookingCommand,OperationResult<bool>>
 {
     private readonly AppDbContext _context;
 
@@ -15,12 +17,13 @@ public class UpdateBookingCommandHandler : IRequestHandler<UpdateBookingCommand,
         _context = context;
     }
 
-    public async Task<bool> Handle(UpdateBookingCommand request, CancellationToken cancellationToken)
+    public async Task<OperationResult<bool>> Handle(UpdateBookingCommand request, CancellationToken cancellationToken)
     {
         var booking = await _context.Bookings
             .FirstOrDefaultAsync(b => b.BookingId == request.Id, cancellationToken);
 
-        if (booking == null) return false;
+        if (booking == null)
+            return OperationResult<bool>.Fail("Booking not found");
 
         var dto = request.Dto;
 
@@ -33,6 +36,6 @@ public class UpdateBookingCommandHandler : IRequestHandler<UpdateBookingCommand,
         booking.Status = dto.Status;
 
         await _context.SaveChangesAsync(cancellationToken);
-        return true;
+        return OperationResult<bool>.Ok(true);
     }
 }

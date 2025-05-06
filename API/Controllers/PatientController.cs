@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
+// TODO: Lägga till operational Result
+// TODO: Jag behöver även lägga till OP i Min Madiatr, handlers
+
 [ApiController]
 [Route("api/[controller]")]
 public class PatientsController : ControllerBase

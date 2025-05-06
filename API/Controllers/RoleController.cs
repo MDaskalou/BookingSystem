@@ -8,6 +8,9 @@ using BookingSystem.Application.Services;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
+
+// TODO: Lägga till operational Result
+// TODO: Jag behöver även lägga till OP i Min Madiatr, handlers
 namespace API.Controllers
 {
     [ApiController]

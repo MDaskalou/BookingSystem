@@ -1,12 +1,13 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using BookingSystem.Application.Common;
 using BookingSystem.Infrastructure;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookingSystem.Application.Commands.DocumentCommand.DeleteDocument;
 
-public class DeleteDocumentCommandHandler : IRequestHandler<DeleteDocumentCommand, bool>
+public class DeleteDocumentCommandHandler : IRequestHandler<DeleteDocumentCommand, OperationResult<bool>>
 {
     private readonly AppDbContext _context;
 
@@ -15,13 +16,15 @@ public class DeleteDocumentCommandHandler : IRequestHandler<DeleteDocumentComman
         _context = context;
     }
 
-    public async Task<bool> Handle(DeleteDocumentCommand request, CancellationToken cancellationToken)
+    public async Task<OperationResult<bool>> Handle(DeleteDocumentCommand request, CancellationToken cancellationToken)
     {
-        var doc = await _context.Documents.FirstOrDefaultAsync(d => d.DocumentId == request.Id, cancellationToken);
-        if (doc == null) return false;
-
+        var doc = await _context.Documents.FindAsync(request.Id);
+        
+        if(doc == null)
+            return OperationResult<bool>.Fail("Document could not found ") ;
         _context.Documents.Remove(doc);
         await _context.SaveChangesAsync(cancellationToken);
-        return true;
+        
+        return OperationResult<bool>.Ok(true, "Documentet has been erased.");
     }
 }

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using BookingSystem.Application.Common;
 using BookingSystem.Application.DTO;
 using BookingSystem.Infrastructure;
 using MediatR;
@@ -9,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookingSystem.Application.Queries.QueriesBooking.GetAllBookings;
 
-public class GetAllBookingsQueryHandler : IRequestHandler<GetAllBookingsQuery, IEnumerable<BookingDto>>
+public class GetAllBookingsQueryHandler : IRequestHandler<GetAllBookingsQuery, OperationResult<List<BookingDto>>>
 {
     private readonly AppDbContext _context;
 
@@ -18,10 +19,11 @@ public class GetAllBookingsQueryHandler : IRequestHandler<GetAllBookingsQuery, I
         _context = context;
     }
 
-    public async Task<IEnumerable<BookingDto>> Handle(GetAllBookingsQuery request, CancellationToken cancellationToken)
+    public async Task<OperationResult<List<BookingDto>>> Handle(GetAllBookingsQuery request, CancellationToken cancellationToken)
     {
-        return await _context.Bookings
-            .Select(b => new BookingDto
+        var bookings = await _context.Bookings.ToListAsync(cancellationToken);
+        
+        var bookingsDto = bookings.Select(b => new BookingDto
             {
                 BookingId = b.BookingId,
                 Date = b.Date,
@@ -32,6 +34,8 @@ public class GetAllBookingsQueryHandler : IRequestHandler<GetAllBookingsQuery, I
                 Priority = b.Priority,
                 Status = b.Status
             })
-            .ToListAsync(cancellationToken);
+            .ToList();
+        
+        return OperationResult<List<BookingDto>>.Ok(bookingsDto);
     }
 }

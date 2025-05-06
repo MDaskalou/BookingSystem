@@ -4,12 +4,12 @@ using BookingSystem.Application.Commands.BookingCommand.UpdateBooking;
 using BookingSystem.Application.DTO;
 using BookingSystem.Application.Queries.QueriesBooking.GetAllBookings;
 using BookingSystem.Application.Queries.QueriesBooking.GetBookingById;
-using BookingSystem.Application.Services;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+    
     [ApiController]
     [Route("api/[controller]")]
     public class BookingController : ControllerBase
@@ -25,8 +25,11 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BookingDto>>> GetAllBookings()
         {
-            var bookings = await _mediator.Send(new GetAllBookingsQuery());
-            return Ok(bookings);
+            var result = await _mediator.Send(new GetAllBookingsQuery());
+            if(!result.Success)
+                return BadRequest(result.ErrorMessage);
+            
+            return Ok(result.Data);
         }
 
 
@@ -34,18 +37,20 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<BookingDto>> GetBookingById(int id)
         {
-            var booking = await _mediator.Send(new GetBookingByIdQuery(id));
-            if (booking == null) return NotFound();
+            var result = await _mediator.Send(new GetBookingByIdQuery(id));
+            if(!result.Success)
+                return NotFound(result.ErrorMessage);
 
-            return Ok(booking);
+            return Ok(result.Data);
         }
 
         // POST: api/booking
         [HttpPost]
         public async Task<IActionResult> CreateBooking([FromBody] CreateBookingDto dto)
         {
-            var created = await _mediator.Send(new CreateBookingCommand(dto));
-            return CreatedAtAction(nameof(GetBookingById), new { id = created.BookingId }, created);
+            var result = await _mediator.Send(new CreateBookingCommand(dto));
+            
+            return CreatedAtAction(nameof(GetBookingById), new { id = result.Data!.BookingId }, result.Data);
         }
 
 
@@ -53,8 +58,9 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateBooking(int id, [FromBody] CreateBookingDto dto)
         {
-            var success = await _mediator.Send(new UpdateBookingCommand(id, dto));
-            if (!success) return NotFound();
+            var result = await _mediator.Send(new UpdateBookingCommand(id, dto));
+            if (!result.Success)
+                return NotFound(result.ErrorMessage);
 
             return NoContent();
         }
