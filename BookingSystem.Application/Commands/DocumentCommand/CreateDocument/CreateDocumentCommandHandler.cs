@@ -1,5 +1,7 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
+using BookingSystem.Application.Common;
 using BookingSystem.Application.DTO;
 using BookingSystem.Domain.Entities;
 using BookingSystem.Infrastructure;
@@ -7,7 +9,7 @@ using MediatR;
 
 namespace BookingSystem.Application.Commands.DocumentCommand.CreateDocument;
 
-public class CreateDocumentCommandHandler : IRequestHandler<CreateDocumentCommand, DocumentDto>
+public class CreateDocumentCommandHandler : IRequestHandler<CreateDocumentCommand, OperationResult<DocumentDto>>
 {
     private readonly AppDbContext _context;
 
@@ -16,24 +18,34 @@ public class CreateDocumentCommandHandler : IRequestHandler<CreateDocumentComman
         _context = context;
     }
 
-    public async Task<DocumentDto> Handle(CreateDocumentCommand request, CancellationToken cancellationToken)
+    public async Task<OperationResult<DocumentDto>> Handle(CreateDocumentCommand request, CancellationToken cancellationToken)
     {
-        var entity = new Document
+        try
         {
-            FileName = request.Dto.FileName,
-            Verified = request.Dto.Verified,
-            UploadedByUserId = request.Dto.UploadedByUserId
-        };
+            var entity = new Document
+            {
+                FileName = request.Dto.FileName,
+                Verified = request.Dto.Verified,
+                UploadedByUserId = request.Dto.UploadedByUserId
+            };
 
-        _context.Documents.Add(entity);
-        await _context.SaveChangesAsync(cancellationToken);
+            _context.Documents.Add(entity);
+            await _context.SaveChangesAsync(cancellationToken);
+            
+            var dto = new DocumentDto
+            {
+                DocumentId = entity.DocumentId,
+                FileName = entity.FileName,
+                Verified = entity.Verified,
+                UploadedByUserId = entity.UploadedByUserId
+            };
+            return OperationResult<DocumentDto>.Ok(dto, "Dokument skapat.");
 
-        return new DocumentDto
+        }
+        catch (Exception ex)
         {
-            DocumentId = entity.DocumentId,
-            FileName = entity.FileName,
-            Verified = entity.Verified,
-            UploadedByUserId = entity.UploadedByUserId
-        };
+            return OperationResult<DocumentDto>.Fail($"Ett fel uppstod: {ex.Message}");
+        }
+       
     }
 }

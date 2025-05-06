@@ -7,7 +7,9 @@ using BookingSystem.Application.Queries.QueriesDocument.GetDocumentById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace API.Controllers;
+
 
 [ApiController]
 [Route("api/[controller]")]
@@ -24,33 +26,42 @@ public class DocumentController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateDocument([FromBody] CreateDocumentDto dto)
     {
-        var created = await _mediator.Send(new CreateDocumentCommand(dto));
-        return CreatedAtAction(nameof(GetDocumentById), new { id = created.DocumentId }, created);
+        var result = await _mediator.Send(new CreateDocumentCommand(dto));
+        if (!result.Success) return BadRequest(result.ErrorMessage);
+        
+        return CreatedAtAction(nameof(GetDocumentById), new { id = result.Data!.DocumentId }, result.Data);
+        
     }
 
     // GET: api/document/{id}
     [HttpGet("{id}")]
     public async Task<IActionResult> GetDocumentById(int id)
     {
-        var document = await _mediator.Send(new GetDocumentByIdQuery(id));
-        if (document == null) return NotFound();
-        return Ok(document);
+        var result = await _mediator.Send(new GetDocumentByIdQuery(id));
+        if (!result.Success)
+            return NotFound(result.ErrorMessage);;
+        return Ok(result.Data);
     }
 
     // GET: api/document
     [HttpGet]
     public async Task<IActionResult> GetAllDocuments()
     {
-        var documents = await _mediator.Send(new GetAllDocumentsQuery());
-        return Ok(documents);
+        var result = await _mediator.Send(new GetAllDocumentsQuery());
+        if (!result.Success)
+            return BadRequest(result.ErrorMessage);
+
+        return Ok(result.Data);
     }
 
     // PUT: api/document/{id}
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateDocument(int id, [FromBody] CreateDocumentDto dto)
     {
-        var success = await _mediator.Send(new UpdateDocumentCommand(id, dto));
-        if (!success) return NotFound();
+        var result = await _mediator.Send(new UpdateDocumentCommand(id, dto));
+        if (!result.Success)
+            return NotFound(result.ErrorMessage);
+        
         return NoContent();
     }
 
@@ -58,8 +69,10 @@ public class DocumentController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteDocument(int id)
     {
-        var success = await _mediator.Send(new DeleteDocumentCommand(id));
-        if (!success) return NotFound();
-        return Ok(new { message = "Document successfully deleted" });
+        var result = await _mediator.Send(new DeleteDocumentCommand(id));
+        if (!result.Success) return NotFound();
+        return NotFound(result.ErrorMessage);
+        
+        return Ok(new { message = result.Message });
     }
 }

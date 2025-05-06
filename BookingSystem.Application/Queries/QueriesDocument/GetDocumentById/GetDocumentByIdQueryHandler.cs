@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using BookingSystem.Application.Common;
 using BookingSystem.Application.DTO;
 using BookingSystem.Infrastructure;
 using MediatR;
@@ -7,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookingSystem.Application.Queries.QueriesDocument.GetDocumentById;
 
-public class GetDocumentByIdQueryHandler : IRequestHandler<GetDocumentByIdQuery, DocumentDto?>
+public class GetDocumentByIdQueryHandler : IRequestHandler<GetDocumentByIdQuery, OperationResult<DocumentDto>>
 {
     private readonly AppDbContext _context;
 
@@ -16,17 +17,21 @@ public class GetDocumentByIdQueryHandler : IRequestHandler<GetDocumentByIdQuery,
         _context = context;
     }
 
-    public async Task<DocumentDto?> Handle(GetDocumentByIdQuery request, CancellationToken cancellationToken)
+    public async Task<OperationResult<DocumentDto>> Handle(GetDocumentByIdQuery request, CancellationToken cancellationToken)
     {
-        var d = await _context.Documents.FirstOrDefaultAsync(x => x.DocumentId == request.Id, cancellationToken);
-        if (d == null) return null;
-
-        return new DocumentDto
+        var doc = await _context.Documents.FindAsync(request.Id);
+        
+        if (doc == null)
+            return OperationResult<DocumentDto>.Fail("Document not found");
+        
+        var dto = new DocumentDto
         {
-            DocumentId = d.DocumentId,
-            FileName = d.FileName,
-            Verified = d.Verified,
-            UploadedByUserId = d.UploadedByUserId
+            DocumentId = doc.DocumentId,
+            FileName = doc.FileName,
+            Verified = doc.Verified,
+            UploadedByUserId = doc.UploadedByUserId
         };
+        
+        return OperationResult<DocumentDto>.Ok(dto);
     }
 }

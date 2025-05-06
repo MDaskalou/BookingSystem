@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using BookingSystem.Application.Common;
 using BookingSystem.Application.DTO;
 using BookingSystem.Domain.Entities;
 using BookingSystem.Infrastructure;
@@ -7,7 +8,8 @@ using MediatR;
 
 namespace BookingSystem.Application.Commands.BookingCommand.CreateBooking;
 
-public class CreateBookingCommandHandler : IRequestHandler<CreateBookingCommand, BookingDto>
+public class CreateBookingCommandHandler : IRequestHandler<CreateBookingCommand, OperationResult<BookingDto>>
+
 {
     private readonly AppDbContext _context;
 
@@ -16,7 +18,7 @@ public class CreateBookingCommandHandler : IRequestHandler<CreateBookingCommand,
         _context = context;
     }
 
-    public async Task<BookingDto> Handle(CreateBookingCommand request, CancellationToken cancellationToken)
+    public async Task<OperationResult<BookingDto>> Handle(CreateBookingCommand request, CancellationToken cancellationToken)
     {
         var dto = request.Dto;
 
@@ -34,7 +36,7 @@ public class CreateBookingCommandHandler : IRequestHandler<CreateBookingCommand,
         _context.Bookings.Add(booking);
         await _context.SaveChangesAsync(cancellationToken);
 
-        return new BookingDto
+        var result = new BookingDto
         {
             BookingId = booking.BookingId,
             Date = booking.Date,
@@ -45,5 +47,6 @@ public class CreateBookingCommandHandler : IRequestHandler<CreateBookingCommand,
             Priority = booking.Priority,
             Status = booking.Status
         };
+        return OperationResult<BookingDto>.Ok(result);
     }
 }

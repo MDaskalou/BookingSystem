@@ -62,14 +62,17 @@ public class CreateUserCommandHandlerTests
         }
         else
         {
+            var result = await handler.Handle(command, CancellationToken.None);
+
             if (!shouldSucceed && validationResult.IsValid)
             {
                 Assert.ThrowsAsync<Exception>(async () => await handler.Handle(command, CancellationToken.None));
             }
             else
             {
-                var userId = await handler.Handle(command, CancellationToken.None);
-                Assert.That(userId, Is.GreaterThan(0));
+                Assert.IsTrue(result.Success);
+                Assert.That(result.Data, Is.GreaterThan(0));
+
             }
         }
     }
@@ -99,8 +102,8 @@ public class CreateUserCommandHandlerTests
             var command = new CreateUserCommand(dto);
 
             // Act
-            var userId = await handler.Handle(command, CancellationToken.None);
-            var createdUser = await context.Users.FirstOrDefaultAsync(u => u.UserId == userId);
+            var result = await handler.Handle(command, CancellationToken.None);
+            var createdUser = await context.Users.FirstOrDefaultAsync(u => u.UserId == result.Data);
 
             // Assert
             Assert.IsNotNull(createdUser);
